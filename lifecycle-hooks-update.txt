@@ -1,0 +1,77 @@
+
+
+Component Initial rendering
+
+1) constructor() - Does not run when you update the component
+
+
+
+2) componentWillMount()   -  Does not run when you update the component
+
+	{change window size = [if( window.innerWidth < 500)]}
+	{If you want to get data from the server for initial rendering this is the right place to do}
+
+
+3) render()
+	{renders the component}
+
+[each time when you change the state and prop, render method is called].
+
+	************** if you have child component (Nested Component) *****************
+		
+		3.1) child constructor(); - Does not run when you update the component
+		3.2) child componentWillMount(); - Does not run when you update the component
+		3.3) child render();
+		3.4) child componentDidMount(); - Does not run when you update the component
+
+
+4) componentDidMount();  - Does not run when you update the component
+	{YOu can make a ajex call}
+
+
+
+
+
+
+
+
+Component Updating 
+
+1) componentWillReceiveProps( nextProps ); - Only occur it that method has props;
+	(Dont change props in here)
+
+
+
+2) shouldComponentUpdate( nextProps,nextState ) {
+ [You can set this component update state - {either you can set it to update or not}]
+ <
+	if( want to update){
+		return true;
+	} else {
+		return false;
+	}
+ >
+} - In force update this wont run
+
+
+
+
+3) componentWillUpdate( nextProps,nextState ) {} - same as component will mount
+		[Do not set state in here.]
+
+4) render();	
+	*************** If You have child components it will update in here***********
+
+
+5) componentDidUpdate(){}
+	{seting 3rd party componnets can be done here}
+
+
+
+
+
+
+
+Component Unmount
+	
+1) componentWillUnmount()
